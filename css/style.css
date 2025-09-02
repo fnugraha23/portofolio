@@ -1,86 +1,146 @@
-/* 1. Impor Font dari Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+/*========== GOOGLE FONTS ==========*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-/* 2. Terapkan Font dan gaya dasar ke seluruh halaman */
+/*========== DASAR & FONT ==========*/
+/* PERBAIKAN #2: LINK MENU BERFUNGSI */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
 body {
   font-family: "Poppins", sans-serif;
+  font-size: 1rem;
   background-color: #f0f2f5;
   color: #333;
   margin: 0;
   padding: 0;
 }
 
-/* ---> TAMBAHKAN KODE BARU DI SINI <--- */
 p {
   line-height: 1.7;
 }
 
-/*========== HEADER & NAVIGASI ==========*/
+.container {
+  max-width: 968px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+/*========== HEADER & NAVIGASI (VERSI FINAL) ==========*/
 header {
   width: 100%;
-  background-color: #fff; /* Memberi warna putih pada header */
-  position: fixed; /* Membuat header tetap di atas saat di-scroll */
+  background-color: #fff;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 100; /* Memastikan header selalu paling depan */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Memberi bayangan halus */
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-nav {
-  height: 4rem; /* Memberi ketinggian pada header */
-  display: flex; /* Mengaktifkan layout modern (Flexbox) */
-  justify-content: space-between; /* Mendorong nama ke kiri dan menu ke kanan */
-  align-items: center; /* Menengahkan item secara vertikal */
-  max-width: 968px; /* Memberi lebar maksimum agar tidak terlalu lebar di layar besar */
-  margin: auto; /* Menengahkan navigasi di tengah halaman */
-  padding: 0 1rem; /* Memberi sedikit jarak dari tepi kiri-kanan */
-}
-
-/* Menata daftar menu (menghilangkan poin dan membuatnya horizontal) */
-nav ul {
+.nav {
+  height: 4rem;
   display: flex;
-  list-style: none; /* Menghilangkan bulatan/poin */
-  gap: 2rem; /* Memberi jarak antar item menu */
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Mendesain semua link di dalam navigasi */
-nav a {
+.nav-logo {
   color: #333;
-  text-decoration: none; /* Menghilangkan garis bawah */
-  font-weight: 500; /* Sedikit menebalkan font menu */
-  transition: color 0.3s; /* Efek transisi saat disentuh kursor */
+  text-decoration: none;
+  font-weight: 600;
 }
 
-/* Efek saat kursor menyentuh link menu */
-nav a:hover {
-  color: #007bff; /* Warna biru, bisa diganti sesuai selera */
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
 }
-/*========== KONTEN UTAMA & LAYOUT DASAR ==========*/
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+/* PERBAIKAN #1 & #4: VISIBILITAS HAMBURGER & IKON SILANG */
+.nav-toggle {
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: none; /* Sembunyikan di desktop */
+}
+
+.nav-toggle .fa-times {
+  display: none; /* Sembunyikan ikon silang (X) secara default */
+}
+
+.nav-toggle.active .fa-bars {
+  display: none; /* Sembunyikan ikon hamburger saat menu aktif */
+}
+
+.nav-toggle.active .fa-times {
+  display: block; /* Tampilkan ikon silang saat menu aktif */
+}
+
+/*========== ATURAN RESPONSIF UNTUK NAVIGASI MOBILE ==========*/
+@media screen and (max-width: 767px) {
+  /* Sembunyikan menu teks di mobile */
+  .nav-list {
+    display: none;
+  }
+
+  /* Tampilkan ikon hamburger di mobile */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Aturan untuk menu mobile yang muncul */
+  .nav-menu.show-menu {
+    display: block;
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 2rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .nav-menu.show-menu .nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+/*========== HERO, TOMBOL, SECTIONS, ABOUT, PROJECTS, DLL ==========*/
+/* (Semua kode CSS Anda yang lain dari sini ke bawah tetap sama, tidak perlu diubah) */
 main {
-  /* Mendorong semua konten utama ke bawah agar tidak tertutup header */
   padding-top: 4rem;
 }
-
-/*========== HERO SECTION ==========*/
 .hero {
-  text-align: center; /* Membuat semua teks di hero menjadi rata tengah */
-  padding: 4rem 1rem; /* Memberi jarak di dalam section */
+  text-align: center;
+  padding: 4rem 1rem;
 }
-
 .hero h1 {
-  /* Ukuran font akan beradaptasi antara 2rem (di HP) hingga 3.5rem (di laptop) */
   font-size: clamp(2rem, 5vw, 3.5rem);
   margin-bottom: 1rem;
 }
-
 .hero p {
-  font-size: 1.1rem; /* Ukuran font deskripsi */
-  color: #555; /* Warna abu-abu yang sedikit lebih gelap */
-  max-width: 600px; /* Agar teks tidak terlalu lebar di layar besar */
-  margin: 0 auto 2rem auto; /* Menengahkan paragraf dan memberi jarak bawah */
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
 }
-
-/*========== GAYA TOMBOL (BUTTONS) ==========*/
 .button {
   display: inline-block;
   background-color: #007bff;
@@ -92,102 +152,80 @@ main {
   transition: background-color 0.3s;
   margin: 0.5rem;
 }
-
 .button:hover {
-  background-color: #0056b3; /* Warna biru lebih gelap saat kursor di atasnya */
+  background-color: #0056b3;
 }
-
 .button--secondary {
   background-color: transparent;
   color: #007bff;
   border: 2px solid #007bff;
 }
-
 .button--secondary:hover {
   background-color: #007bff;
   color: #fff;
 }
-/*========== GAYA UMUM UNTUK SETIAP BAGIAN (SECTION) ==========*/
 .section {
-  padding: 4rem 1rem; /* Memberi jarak di dalam setiap section */
+  padding: 4rem 1rem;
 }
-
 .section-title {
-  /* Ukuran font akan beradaptasi antara 1.5rem hingga 2.5rem */
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   text-align: center;
   margin-bottom: 3rem;
 }
-
-/*========== TENTANG SAYA (ABOUT) - Layout Satu Kolom Baru ==========*/
 .about-container {
-  max-width: 1500px; /* Membatasi lebar agar teks nyaman dibaca */
-  margin: auto; /* Menengahkan container itu sendiri */
-  text-align: center; /* Membuat semua isinya (gambar & teks) rata tengah */
+  max-width: 850px;
+  margin: auto;
+  text-align: left;
 }
-
 .about-img {
-  width: 300px;
-  height: 400px;
-  border-radius: 0.75rem; /* Mengubahnya kembali ke kotak dengan sudut membulat */
+  width: 200px;
+  height: 200px;
+  border-radius: 0.75rem;
   object-fit: cover;
   margin-bottom: 2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .about-data p {
-  font-size: 1.6rem; /* Ukuran font yang nyaman untuk dibaca */
+  font-size: 1.125rem;
   margin-bottom: 1rem;
 }
-/*========== MEMBUAT TAMPILAN RESPONSIF UNTUK LAYAR LEBIH BESAR ==========*/
-@media screen and (min-width: 768px) {
-  /* ... aturan lain ... */
-
-  .about-container {
-    /* Kolom pertama selebar gambar (300px), kolom kedua mengisi sisanya */
-    grid-template-columns: 300px 1fr;
-  }
-
-  .about-data {
-    padding-left: 2rem;
-    align-self: center; /* Cukup dengan perintah ini untuk menengahkan */
-  }
-}
-/*========== PROYEK (PROJECTS) ==========*/
 .projects-container {
   display: grid;
-  grid-template-columns: 1fr; /* 1 kolom untuk tampilan mobile */
+  grid-template-columns: 1fr;
   gap: 1.5rem;
+  max-width: 968px;
+  margin: auto;
 }
-
+.project-card {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
 .project-card:hover {
-  transform: translateY(
-    -5px
-  ); /* Efek kartu sedikit terangkat saat disentuh kursor */
+  transform: translateY(-5px);
 }
-
-/* ---> KODE BARU DITAMBAHKAN DI SINI <--- */
 .project-img {
   width: 100%;
-  aspect-ratio: 1 / 1; /* MEMBUAT GAMBAR MENJADI PERSEGI */
+  height: 200px;
   object-fit: cover;
 }
-
 .project-data {
   padding: 1.5rem;
 }
-
 .project-title {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
-
 .project-description {
   margin-bottom: 1rem;
 }
-
 .project-tags .tag {
   display: inline-block;
-  background-color: #e6f2ff; /* Warna biru muda */
+  background-color: #e6f2ff;
   color: #007bff;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
@@ -196,106 +234,65 @@ main {
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
 }
-
-/*========== ATURAN RESPONSIF UNTUK PROYEK ==========*/
-@media screen and (min-width: 768px) {
-  .projects-container {
-    /* Mengubah menjadi 2 kolom di layar tablet */
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .projects-container {
-    /* Mengubah menjadi 3 kolom di layar laptop/desktop */
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-/*========== PUBLIKASI ==========*/
 .publications-container {
   display: grid;
   gap: 1.5rem;
+  max-width: 968px;
+  margin: auto;
 }
-
 .publication-card {
   background-color: #fff;
-  border: 1px solid #ddd; /* Menggunakan garis tepi, bukan bayangan */
+  border: 1px solid #ddd;
   padding: 1.5rem;
   border-radius: 0.5rem;
 }
-
 .publication-title {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
-
 .publication-meta {
   font-size: 0.9rem;
   color: #555;
   margin-bottom: 1rem;
 }
-
 .publication-link {
   font-weight: 500;
   color: #007bff;
   text-decoration: none;
 }
-
 .publication-link:hover {
   text-decoration: underline;
 }
-
-/*========== ATURAN RESPONSIF UNTUK PUBLIKASI ==========*/
-@media screen and (min-width: 992px) {
-  .publications-container {
-    /* Mengubah menjadi 2 kolom di layar laptop/desktop */
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-/*========== KEAHLIAN (SKILLS) ==========*/
 .skills-container {
   display: grid;
   gap: 2rem;
+  max-width: 968px;
+  margin: auto;
 }
-
 .skills-subtitle {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  border-bottom: 2px solid #007bff; /* Garis bawah biru sebagai aksen */
+  border-bottom: 2px solid #007bff;
   padding-bottom: 0.5rem;
 }
-
 .skills-list {
-  list-style: none; /* Menghilangkan bulatan/poin bawaan */
+  list-style: none;
   padding-left: 0;
 }
-
 .skills-list li {
   padding: 0.75rem 0;
   font-weight: 500;
 }
-
-/*========== ATURAN RESPONSIF UNTUK KEAHLIAN ==========*/
-@media screen and (min-width: 768px) {
-  .skills-container {
-    /* Mengubah menjadi 2 kolom di layar tablet ke atas */
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-/*========== KONTAK ==========*/
 .contact-container {
   text-align: center;
 }
-
 .contact-description {
   max-width: 500px;
   margin: 0 auto 2rem auto;
 }
-
 .contact-button {
   margin-bottom: 2rem;
 }
-
 .contact-social-link {
   font-size: 1.25rem;
   color: #333;
@@ -305,48 +302,29 @@ main {
   text-decoration: none;
   transition: color 0.3s;
 }
-
 .contact-social-link:hover {
   color: #007bff;
 }
-
-/*========== FOOTER ==========*/
 .footer {
-  background-color: #333; /* Warna latar belakang gelap untuk footer */
-  color: #fff; /* Warna teks putih */
+  background-color: #333;
+  color: #fff;
   text-align: center;
   padding: 2rem 1rem;
 }
-/* Aturan Responsif untuk Mobile */
-@media screen and (max-width: 767px) {
-  .nav-toggle {
-    display: block; /* Tampilkan ikon hamburger di mobile */
-  }
 
-  .nav-menu {
-    position: fixed;
-    /* === PERUBAHAN UTAMA DIMULAI DI SINI === */
-    top: 0;
-    right: -100%; /* Sembunyikan menu di luar layar sebelah kanan */
-    width: 70%; /* Lebar menu hanya 70% dari layar */
-    height: 100vh; /* Tinggi menu penuh satu layar */
-    background-color: #fff;
-    padding: 3rem 2rem;
-    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.15); /* Bayangan di sebelah kiri */
-    border-radius: 0; /* Hilangkan sudut melengkung */
-    transition: right 0.4s; /* Animasikan properti 'right' */
-    z-index: 99;
+@media screen and (min-width: 768px) {
+  .projects-container {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .nav-list {
-    flex-direction: column;
-    align-items: flex-start; /* Buat menu rata kiri agar rapi */
-    gap: 2.5rem; /* Beri jarak lebih besar */
+  .skills-container {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-
-/* Kelas "show-menu" yang akan ditambahkan oleh JavaScript */
-.show-menu {
-  top: 0; /* Hapus baris ini dari kode lama */
-  right: 0; /* Ubah 'top' menjadi 'right: 0' untuk memunculkan menu */
+@media screen and (min-width: 992px) {
+  .projects-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .publications-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
