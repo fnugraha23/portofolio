@@ -1,0 +1,300 @@
+/* 1. Impor Font dari Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/* 2. Terapkan Font dan gaya dasar ke seluruh halaman */
+body {
+  font-family: "Poppins", sans-serif; /* Menggunakan font Poppins */
+  background-color: #f0f2f5;
+  color: #333; /* Warna teks utama (abu-abu gelap) */
+  margin: 0; /* Menghilangkan margin bawaan browser */
+  padding: 0; /* Menghilangkan padding bawaan browser */
+}
+/*========== HEADER & NAVIGASI ==========*/
+header {
+  width: 100%;
+  background-color: #fff; /* Memberi warna putih pada header */
+  position: fixed; /* Membuat header tetap di atas saat di-scroll */
+  top: 0;
+  left: 0;
+  z-index: 100; /* Memastikan header selalu paling depan */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Memberi bayangan halus */
+}
+
+nav {
+  height: 4rem; /* Memberi ketinggian pada header */
+  display: flex; /* Mengaktifkan layout modern (Flexbox) */
+  justify-content: space-between; /* Mendorong nama ke kiri dan menu ke kanan */
+  align-items: center; /* Menengahkan item secara vertikal */
+  max-width: 968px; /* Memberi lebar maksimum agar tidak terlalu lebar di layar besar */
+  margin: auto; /* Menengahkan navigasi di tengah halaman */
+  padding: 0 1rem; /* Memberi sedikit jarak dari tepi kiri-kanan */
+}
+
+/* Menata daftar menu (menghilangkan poin dan membuatnya horizontal) */
+nav ul {
+  display: flex;
+  list-style: none; /* Menghilangkan bulatan/poin */
+  gap: 2rem; /* Memberi jarak antar item menu */
+}
+
+/* Mendesain semua link di dalam navigasi */
+nav a {
+  color: #333;
+  text-decoration: none; /* Menghilangkan garis bawah */
+  font-weight: 500; /* Sedikit menebalkan font menu */
+  transition: color 0.3s; /* Efek transisi saat disentuh kursor */
+}
+
+/* Efek saat kursor menyentuh link menu */
+nav a:hover {
+  color: #007bff; /* Warna biru, bisa diganti sesuai selera */
+}
+/*========== KONTEN UTAMA & LAYOUT DASAR ==========*/
+main {
+  /* Mendorong semua konten utama ke bawah agar tidak tertutup header */
+  padding-top: 4rem;
+}
+
+/*========== HERO SECTION ==========*/
+.hero {
+  text-align: center; /* Membuat semua teks di hero menjadi rata tengah */
+  padding: 4rem 1rem; /* Memberi jarak di dalam section */
+}
+
+.hero h1 {
+  font-size: 2.5rem; /* Ukuran font judul utama */
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem; /* Ukuran font deskripsi */
+  color: #555; /* Warna abu-abu yang sedikit lebih gelap */
+  max-width: 600px; /* Agar teks tidak terlalu lebar di layar besar */
+  margin: 0 auto 2rem auto; /* Menengahkan paragraf dan memberi jarak bawah */
+}
+
+/*========== GAYA TOMBOL (BUTTONS) ==========*/
+.button {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 1rem 1.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  margin: 0.5rem;
+}
+
+.button:hover {
+  background-color: #0056b3; /* Warna biru lebih gelap saat kursor di atasnya */
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: #007bff;
+  border: 2px solid #007bff;
+}
+
+.button--secondary:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+/*========== GAYA UMUM UNTUK SETIAP BAGIAN (SECTION) ==========*/
+.section {
+  padding: 4rem 1rem; /* Memberi jarak di dalam setiap section */
+}
+
+.section-title {
+  font-size: 2rem; /* Ukuran font untuk semua judul section */
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/*========== TENTANG SAYA (ABOUT) ==========*/
+.about-container {
+  display: grid; /* Mengaktifkan layout grid modern */
+  gap: 2rem; /* Memberi jarak antara gambar dan teks */
+  align-items: center; /* Menengahkan item secara vertikal */
+}
+
+.about-img {
+  width: 250px; /* Menentukan ukuran gambar */
+  border-radius: 0.5rem; /* Membuat sudut gambar sedikit melengkung */
+  justify-self: center; /* Menengahkan gambar di dalam kolomnya */
+}
+/*========== MEMBUAT TAMPILAN RESPONSIF UNTUK LAYAR LEBIH BESAR ==========*/
+@media screen and (min-width: 768px) {
+  /* Aturan di dalam sini hanya aktif jika lebar layar 768px atau lebih */
+
+  .about-container {
+    /* Mengubah layout menjadi 2 kolom: 1 bagian untuk gambar, 1.5 bagian untuk teks */
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+/*========== PROYEK (PROJECTS) ==========*/
+.projects-container {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 kolom untuk tampilan mobile */
+  gap: 1.5rem;
+}
+
+.project-card {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Memastikan gambar tidak keluar dari sudut melengkung */
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(
+    -5px
+  ); /* Efek kartu sedikit terangkat saat disentuh kursor */
+}
+
+.project-data {
+  padding: 1.5rem;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  margin-bottom: 1rem;
+}
+
+.project-tags .tag {
+  display: inline-block;
+  background-color: #e6f2ff; /* Warna biru muda */
+  color: #007bff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/*========== ATURAN RESPONSIF UNTUK PROYEK ==========*/
+@media screen and (min-width: 768px) {
+  .projects-container {
+    /* Mengubah menjadi 2 kolom di layar tablet */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .projects-container {
+    /* Mengubah menjadi 3 kolom di layar laptop/desktop */
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/*========== PUBLIKASI ==========*/
+.publications-container {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.publication-card {
+  background-color: #fff;
+  border: 1px solid #ddd; /* Menggunakan garis tepi, bukan bayangan */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.publication-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.publication-meta {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.publication-link {
+  font-weight: 500;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.publication-link:hover {
+  text-decoration: underline;
+}
+
+/*========== ATURAN RESPONSIF UNTUK PUBLIKASI ==========*/
+@media screen and (min-width: 992px) {
+  .publications-container {
+    /* Mengubah menjadi 2 kolom di layar laptop/desktop */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/*========== KEAHLIAN (SKILLS) ==========*/
+.skills-container {
+  display: grid;
+  gap: 2rem;
+}
+
+.skills-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff; /* Garis bawah biru sebagai aksen */
+  padding-bottom: 0.5rem;
+}
+
+.skills-list {
+  list-style: none; /* Menghilangkan bulatan/poin bawaan */
+  padding-left: 0;
+}
+
+.skills-list li {
+  padding: 0.75rem 0;
+  font-weight: 500;
+}
+
+/*========== ATURAN RESPONSIF UNTUK KEAHLIAN ==========*/
+@media screen and (min-width: 768px) {
+  .skills-container {
+    /* Mengubah menjadi 2 kolom di layar tablet ke atas */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/*========== KONTAK ==========*/
+.contact-container {
+  text-align: center;
+}
+
+.contact-description {
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+}
+
+.contact-button {
+  margin-bottom: 2rem;
+}
+
+.contact-social-link {
+  font-size: 1.25rem;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-social-link:hover {
+  color: #007bff;
+}
+
+/*========== FOOTER ==========*/
+.footer {
+  background-color: #333; /* Warna latar belakang gelap untuk footer */
+  color: #fff; /* Warna teks putih */
+  text-align: center;
+  padding: 2rem 1rem;
+}
