@@ -3,12 +3,18 @@
 
 /* 2. Terapkan Font dan gaya dasar ke seluruh halaman */
 body {
-  font-family: "Poppins", sans-serif; /* Menggunakan font Poppins */
+  font-family: "Poppins", sans-serif;
   background-color: #f0f2f5;
-  color: #333; /* Warna teks utama (abu-abu gelap) */
-  margin: 0; /* Menghilangkan margin bawaan browser */
-  padding: 0; /* Menghilangkan padding bawaan browser */
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
+
+/* ---> TAMBAHKAN KODE BARU DI SINI <--- */
+p {
+  line-height: 1.7;
+}
+
 /*========== HEADER & NAVIGASI ==========*/
 header {
   width: 100%;
@@ -62,7 +68,8 @@ main {
 }
 
 .hero h1 {
-  font-size: 2.5rem; /* Ukuran font judul utama */
+  /* Ukuran font akan beradaptasi antara 2rem (di HP) hingga 3.5rem (di laptop) */
+  font-size: clamp(2rem, 5vw, 3.5rem);
   margin-bottom: 1rem;
 }
 
@@ -106,30 +113,43 @@ main {
 }
 
 .section-title {
-  font-size: 2rem; /* Ukuran font untuk semua judul section */
+  /* Ukuran font akan beradaptasi antara 1.5rem hingga 2.5rem */
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   text-align: center;
   margin-bottom: 3rem;
 }
 
-/*========== TENTANG SAYA (ABOUT) ==========*/
+/*========== TENTANG SAYA (ABOUT) - Layout Satu Kolom Baru ==========*/
 .about-container {
-  display: grid; /* Mengaktifkan layout grid modern */
-  gap: 2rem; /* Memberi jarak antara gambar dan teks */
-  align-items: center; /* Menengahkan item secara vertikal */
+  max-width: 1500px; /* Membatasi lebar agar teks nyaman dibaca */
+  margin: auto; /* Menengahkan container itu sendiri */
+  text-align: center; /* Membuat semua isinya (gambar & teks) rata tengah */
 }
 
 .about-img {
-  width: 250px; /* Menentukan ukuran gambar */
-  border-radius: 0.5rem; /* Membuat sudut gambar sedikit melengkung */
-  justify-self: center; /* Menengahkan gambar di dalam kolomnya */
+  width: 300px;
+  height: 400px;
+  border-radius: 0.75rem; /* Mengubahnya kembali ke kotak dengan sudut membulat */
+  object-fit: cover;
+  margin-bottom: 2rem;
+}
+
+.about-data p {
+  font-size: 1.6rem; /* Ukuran font yang nyaman untuk dibaca */
+  margin-bottom: 1rem;
 }
 /*========== MEMBUAT TAMPILAN RESPONSIF UNTUK LAYAR LEBIH BESAR ==========*/
 @media screen and (min-width: 768px) {
-  /* Aturan di dalam sini hanya aktif jika lebar layar 768px atau lebih */
+  /* ... aturan lain ... */
 
   .about-container {
-    /* Mengubah layout menjadi 2 kolom: 1 bagian untuk gambar, 1.5 bagian untuk teks */
-    grid-template-columns: 1fr 1.5fr;
+    /* Kolom pertama selebar gambar (300px), kolom kedua mengisi sisanya */
+    grid-template-columns: 300px 1fr;
+  }
+
+  .about-data {
+    padding-left: 2rem;
+    align-self: center; /* Cukup dengan perintah ini untuk menengahkan */
   }
 }
 /*========== PROYEK (PROJECTS) ==========*/
@@ -139,18 +159,17 @@ main {
   gap: 1.5rem;
 }
 
-.project-card {
-  background-color: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Memastikan gambar tidak keluar dari sudut melengkung */
-  transition: transform 0.3s;
-}
-
 .project-card:hover {
   transform: translateY(
     -5px
   ); /* Efek kartu sedikit terangkat saat disentuh kursor */
+}
+
+/* ---> KODE BARU DITAMBAHKAN DI SINI <--- */
+.project-img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* MEMBUAT GAMBAR MENJADI PERSEGI */
+  object-fit: cover;
 }
 
 .project-data {
