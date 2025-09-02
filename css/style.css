@@ -317,3 +317,36 @@ main {
   text-align: center;
   padding: 2rem 1rem;
 }
+/* Aturan Responsif untuk Mobile */
+@media screen and (max-width: 767px) {
+  .nav-toggle {
+    display: block; /* Tampilkan ikon hamburger di mobile */
+  }
+
+  .nav-menu {
+    position: fixed;
+    /* === PERUBAHAN UTAMA DIMULAI DI SINI === */
+    top: 0;
+    right: -100%; /* Sembunyikan menu di luar layar sebelah kanan */
+    width: 70%; /* Lebar menu hanya 70% dari layar */
+    height: 100vh; /* Tinggi menu penuh satu layar */
+    background-color: #fff;
+    padding: 3rem 2rem;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.15); /* Bayangan di sebelah kiri */
+    border-radius: 0; /* Hilangkan sudut melengkung */
+    transition: right 0.4s; /* Animasikan properti 'right' */
+    z-index: 99;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start; /* Buat menu rata kiri agar rapi */
+    gap: 2.5rem; /* Beri jarak lebih besar */
+  }
+}
+
+/* Kelas "show-menu" yang akan ditambahkan oleh JavaScript */
+.show-menu {
+  top: 0; /* Hapus baris ini dari kode lama */
+  right: 0; /* Ubah 'top' menjadi 'right: 0' untuk memunculkan menu */
+}
